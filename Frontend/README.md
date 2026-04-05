@@ -1,16 +1,32 @@
-# React + Vite
+Project Structure:
+The project is divided into two parts the back end holds the information of creating a user as well as handling the information allow the users to login and log out. The front end shows the user home page which would allow the user to create an account and log in at first once the user is log in the user can then see the option to log out once the user has successfully log in.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+In the future the back end will be able to store other schemas and resolvers and the front end will have more pages made to create a list the user can make to add a gaming list back log.
 
-Currently, two official plugins are available:
+SetUp Steps:
+Create a .env file in the backend folder and add the .env provided in required environment variables section of this README file. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+From the terminal, cd into backend folder and then npm install
 
-## React Compiler
+cd.. and then cd into the frontend folder and type npm install
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+after that npm run dev to start the page
 
-## Expanding the ESLint configuration
+Authentication approach:
+The project uses the JWT and Bcrypt to authenticate the users information when creating an account. The cookies serve as a token to store the users activity while logged in if the user deletes there cookies the user must log in again. 
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Required environment variables:
+The environment variables will hold the MONGO connection to the Atlus database, the Port the website is running on, the JWT token and how long vaild for.
+.evn 
+<!-- MONGO = mongodb+srv://<username>:<password>c403@cluster0.zjjl30c.mongodb.net/?appName=Cluster0 -->
+PORT = 4000
+JWT_SECRET = secret_key
+JWT_EXPIRY = 3000
+
+What is completed so far:
+Allowing the user to log create an account or login to there account from the home page, a register page allowing the player to create an account, login page to allow the user to log into their account and log out button when the user wants to log out.
+
+
+Group members participation :
+Back-end: Isabel Lorrelyn Lag-ang and Tajinder Nijjar
+Front-end: Greg Komarnicky and Tajinder Nijjar

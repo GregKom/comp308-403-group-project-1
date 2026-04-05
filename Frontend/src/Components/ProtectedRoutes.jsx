@@ -7,7 +7,8 @@ query GetMe {
     {
         id,
         username,
-        email
+        email,
+        role
     }
 }
 `

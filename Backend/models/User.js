@@ -2,11 +2,10 @@ import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
 const userSchema = new mongoose.Schema({
-    //pretty sure mongo already gives an ID but I'll leave this commented for now
-    //userID: {type: String, requried: true},
     username: {type: String, required: true, unique: true},
     password: {type: String, required: true},
-    email: {type: String, required: true}
+    email: {type: String, required: true},
+    role: {type: String, default: "user"}
 }, {timestamps: true});
 
 //password hashing

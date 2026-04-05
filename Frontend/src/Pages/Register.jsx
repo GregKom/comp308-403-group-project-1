@@ -1,5 +1,6 @@
 import { useState } from "react";
-import {gql, useQuery, useMutation, useLazyQuery} from "@apollo/client"
+import {gql, useMutation} from "@apollo/client"
+import { useNavigate } from "react-router-dom";
 
 const REGISTER = gql `
 mutation RegisterUser($username: String!, $password: String!, $email: String!)
@@ -15,18 +16,26 @@ mutation RegisterUser($username: String!, $password: String!, $email: String!)
 
 function Register()
 {
+
     const [registerUser, {loading: registering, error: addError}] = useMutation(REGISTER);
 
     //use states
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
+    const [success, setSuccess] = useState("");
+
+    const navigate = useNavigate();
 
     const handleSubmitRegisterUser = async (e) => {
         e.preventDefault();
 
         await registerUser({variables: {username: username, password: password, email: email}});
         
+        setSuccess("Account created successfully");
+        setTimeout(() => {
+            navigate("/login");
+        }, 2000)
     }
     return (
         <div>
@@ -46,6 +55,8 @@ function Register()
                 </label>    
                 <button type="submit">Register</button>                            
             </form>
+            {addError && <p>{addError.message}</p>}
+            {success && <p>{success}</p>}
         </div>
     )
 }

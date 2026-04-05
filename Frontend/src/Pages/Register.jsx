@@ -1,64 +1,101 @@
 import { useState } from "react";
-import {gql, useMutation} from "@apollo/client"
-import { useNavigate } from "react-router-dom";
+import { gql, useMutation } from "@apollo/client";
+import { useNavigate, Link } from "react-router-dom";
 
-const REGISTER = gql `
-mutation RegisterUser($username: String!, $password: String!, $email: String!)
-{
-    registerUser(username: $username, password: $password, email: $email)
-    {
-        id
-        username
-        email
+const REGISTER = gql`
+  mutation RegisterUser($username: String!, $password: String!, $email: String!) {
+    registerUser(username: $username, password: $password, email: $email) {
+      id
+      username
+      email
     }
-}
-`
+  }
+`;
 
-function Register()
-{
+function Register() {
+  const navigate = useNavigate();
 
-    const [registerUser, {loading: registering, error: addError}] = useMutation(REGISTER);
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: ""
+  });
 
-    //use states
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [email, setEmail] = useState("");
-    const [success, setSuccess] = useState("");
+  const [message, setMessage] = useState("");
 
-    const navigate = useNavigate();
+  const [registerUser, { loading, error }] = useMutation(REGISTER);
 
-    const handleSubmitRegisterUser = async (e) => {
-        e.preventDefault();
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
 
-        await registerUser({variables: {username: username, password: password, email: email}});
-        
-        setSuccess("Account created successfully");
-        setTimeout(() => {
-            navigate("/login");
-        }, 2000)
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      await registerUser({
+        variables: {
+          username: formData.username,
+          email: formData.email,
+          password: formData.password
+        }
+      });
+
+      setMessage("Account created successfully");
+
+      setTimeout(() => {
+        navigate("/login");
+      }, 1500);
+    } catch (err) {
+      console.error(err);
     }
-    return (
-        <div>
-            <h1>Register</h1>
-            <form onSubmit={handleSubmitRegisterUser}>
-                <label>
-                    Username:
-                    <input type='text' value={username} onChange={(e) => setUsername(e.target.value)}/>
-                </label>
-                <label>
-                    Password:
-                    <input type='text' value={password} onChange={(e) => setPassword(e.target.value)}/>
-                </label>
-                <label>
-                    Email:
-                    <input type='text' value={email} onChange={(e) => setEmail(e.target.value)}/>
-                </label>    
-                <button type="submit">Register</button>                            
-            </form>
-            {addError && <p>{addError.message}</p>}
-            {success && <p>{success}</p>}
-        </div>
-    )
+  };
+
+  return (
+    <div>
+      <h2>Register</h2>
+
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="username"
+          placeholder="Enter username"
+          value={formData.username}
+          onChange={handleChange}
+        />
+
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter email"
+          value={formData.email}
+          onChange={handleChange}
+        />
+
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter password"
+          value={formData.password}
+          onChange={handleChange}
+        />
+
+        <button type="submit" disabled={loading}>
+          {loading ? "Registering..." : "Register"}
+        </button>
+      </form>
+
+      {message && <p>{message}</p>}
+      {error && <p>{error.message}</p>}
+
+      <p>
+        Already have an account? <Link to="/login">Login</Link>
+      </p>
+    </div>
+  );
 }
 
 export default Register;

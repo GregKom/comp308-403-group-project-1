@@ -1,30 +1,27 @@
 export const userTypeDefs = `graphql
 type User {
-    userID: ID!,
-    userName: String!,
-    password: String!,
+    id: ID!,
+    username: String!,
     email: String!
 }
 
 type Query {
-    users: [Users!]!
+    users: [User!]!
+    me: User
 }
 
 type Mutation {
     registerUser(
-        userName: String!,
+        username: String!,
         password: String!,
         email: String!
     ) : User!
 
     loginUser(
-        userName: String!,
+        username: String!,
         password: String!
     ) : User!
     
-    logoutUser(
-        userID: ID!,
-        userName: String!
-    ) : User!
+    logoutUser : String!
 }
 `

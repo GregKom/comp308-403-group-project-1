@@ -80,6 +80,46 @@ export const userResolvers = {
         {
           context.res.clearCookie("token");
           return "Logged out"
+        },
+
+        updateUser: async(_, args, context) =>
+        {
+            const token = context.req.cookies.token;
+            if (!token) {
+                throw new Error("Not Logged In");
+            }
+            const payload = jwt.verify(token, JWT_SECRET)
+
+            const user = await User.findById(args.id);
+
+            if (user.id != payload._id)
+            {
+                throw new Error("Not Authorized!");
+            }
+
+            return User.findByIdAndUpdate(args.id, args.input)
+        },
+
+        deleteUser: async(_, args, context) => 
+        {
+            const token = context.req.cookies.token;
+            if(!token)
+            {
+                throw new Error("Not Logged In");
+            }
+            const payload = jwt.verify(token, JWT_SECRET)
+
+            const user = await User.findById(args.id);
+
+            if (user.id != payload._id)
+            {
+                throw new Error("Not Authorized");
+            }
+
+            context.res.clearCookie("token")
+            await User.findByIdAndDelete(args.id)
+
+            return "User Deleted Successfully"
         }
     }
 }

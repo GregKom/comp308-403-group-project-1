@@ -11,6 +11,12 @@ type Query {
     me: User
 }
 
+input updateInput {
+    username: String
+    password: String
+    email: String
+}
+
 type Mutation {
     registerUser(
         username: String!,
@@ -24,5 +30,9 @@ type Mutation {
     ) : User!
     
     logoutUser : String!
+
+    updateUser(id: ID!, input: updateInput!): User!
+
+    deleteUser(id: ID!) : String!
 }
 `

@@ -4,6 +4,10 @@ import { GET_CURRENT_USER } from "../graphql/queries";
 import { useUser } from "../Hooks/useUser";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+
 function UpdateAccount()
 {
     const navigate = useNavigate();
@@ -81,7 +85,7 @@ function UpdateAccount()
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Username:</label>
-                    <input
+                    <TextField
                         type="text"
                         name="username"
                         value={formData.username}
@@ -90,7 +94,7 @@ function UpdateAccount()
                 </div>
                 <div>
                     <label>Email:</label>
-                    <input
+                    <TextField
                         type="email"
                         name="email"
                         value={formData.email}
@@ -99,21 +103,21 @@ function UpdateAccount()
                 </div>
                 <div>
                     <label>Password:</label>
-                    <input
+                    <TextField
                         type="password"
                         name="password"
                         value={formData.password}
                         onChange={handleChange}
                     />
                 </div>
-                <button type="submit">Update</button>
+                <Button type="submit">Update</Button>
             </form>
 
             {message && <p>{message}</p>}
         </div>
 
         <div>
-            <button onClick={handleDelete}>Delete Account</button>        
+            <Button onClick={handleDelete}>Delete Account</Button>        
         </div>
         </>
     )

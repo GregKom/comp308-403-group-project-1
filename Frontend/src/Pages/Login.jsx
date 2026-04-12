@@ -2,10 +2,13 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useUser } from "../Hooks/useUser";
 
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 
 function Login() {
   const navigate = useNavigate();
   const {login, loading, error, message, setMessage} = useUser();
+
   const [formData, setFormData] = useState({
     username: "",
     password: ""
@@ -33,7 +36,7 @@ function Login() {
       <h2>Login</h2>
 
       <form onSubmit={handleSubmit}>
-        <input
+        <TextField
           type="text"
           name="username"
           placeholder="Enter username"
@@ -41,7 +44,7 @@ function Login() {
           onChange={handleChange}
         />
 
-        <input
+        <TextField
           type="password"
           name="password"
           placeholder="Enter password"
@@ -49,9 +52,9 @@ function Login() {
           onChange={handleChange}
         />
 
-        <button type="submit" disabled={loading}>
+        <Button variant = "contained" type="submit" disabled={loading}>
           {loading ? "Logging in..." : "Login"}
-        </button>
+        </Button>
       </form>
 
       {message && <p>{message}</p>}

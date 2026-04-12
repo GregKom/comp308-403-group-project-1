@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useUser } from "../Hooks/useUser";
 
+import Button from "@mui/material/Button"
+import TextField from "@mui/material/TextField";
+
 function Register() {
   const navigate = useNavigate();
   const {register, loadingRegister, errorRegister, message, setMessage} = useUser();
@@ -30,7 +33,8 @@ function Register() {
       <h2>Register</h2>
 
       <form onSubmit={handleSubmit}>
-        <input
+
+        <TextField
           type="text"
           name="username"
           placeholder="Enter username"
@@ -38,7 +42,7 @@ function Register() {
           onChange={handleChange}
         />
 
-        <input
+        <TextField
           type="email"
           name="email"
           placeholder="Enter email"
@@ -46,17 +50,17 @@ function Register() {
           onChange={handleChange}
         />
 
-        <input
-          type="password"
+        <TextField
+          type= "password"
           name="password"
           placeholder="Enter password"
           value={formData.password}
           onChange={handleChange}
         />
 
-        <button type="submit" disabled={loadingRegister}>
+        <Button variant = "contained" type="submit" disabled={loadingRegister}>
           {loadingRegister ? "Registering..." : "Register"}
-        </button>
+        </Button>
       </form>
 
       {message && <p>{message}</p>}

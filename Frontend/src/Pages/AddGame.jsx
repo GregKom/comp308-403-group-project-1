@@ -2,6 +2,12 @@ import { useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import { ADD_GAME } from "../graphql/mutations";
+
+import Button from "@mui/material/Button"
+import TextField from "@mui/material/TextField";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+
 function AddGame()
 {
     const navigate = useNavigate();
@@ -63,7 +69,7 @@ function AddGame()
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label>Title:</label>
-                        <input
+                        <TextField
                             type="text"
                             name="title"
                             value={formData.title}
@@ -72,7 +78,7 @@ function AddGame()
                     </div>
                     <div>
                         <label>Platform:</label>
-                        <input
+                        <TextField
                             type="text"
                             name="platform"
                             value={formData.platform}
@@ -81,7 +87,7 @@ function AddGame()
                     </div>
                     <div>
                         <label>Description:</label>
-                        <input
+                        <TextField
                             type="text"
                             name="description"
                             value={formData.description}
@@ -90,20 +96,20 @@ function AddGame()
                     </div>
                     <div>
                         <label>Status:</label>
-                        <select
+                        <Select
                             name="status"
                             value={formData.status}
                             onChange={handleChange}
                         >
-                            <option value="Playing">Playing</option>
-                            <option value="Completed">Completed</option>
-                            <option value="Backlog">Backlog</option>
-                            <option value="Re-playing">Re-playing</option>
-                        </select>
+                            <MenuItem value="Playing">Playing</MenuItem>
+                            <MenuItem value="Completed">Completed</MenuItem>
+                            <MenuItem value="Backlog">Backlog</MenuItem>
+                            <MenuItem value="Re-playing">Re-playing</MenuItem>
+                        </Select>
                     </div>
                     <div>
                         <label>Rating (0-10):</label>
-                        <input
+                        <TextField
                             type="number"
                             name="rating"
                             min="0"
@@ -114,7 +120,7 @@ function AddGame()
                     </div>
                     <div>
                         <label>Release Date:</label>
-                        <input
+                        <TextField
                             type="date"
                             name="releaseDate"
                             value={formData.releaseDate}
@@ -123,7 +129,7 @@ function AddGame()
                     </div>
                     <div>
                         <label>Image URL:</label>
-                        <input
+                        <TextField
                             type="text"
                             name="imageUrl"
                             value={formData.imageUrl}
@@ -131,7 +137,7 @@ function AddGame()
                         />
                     </div>
                     <div>
-                        <button type="submit">Add Game</button>
+                        <Button type="submit">Add Game</Button>
                     </div>
                     {message && <p>{message}</p>}
                 </form>

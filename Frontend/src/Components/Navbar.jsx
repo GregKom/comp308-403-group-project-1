@@ -25,8 +25,9 @@ function Navbar() {
           <Link to="/dashboard" class="font-medium text-fg-brand hover:underline">Dashboard</Link> |{" "}
           <Link to="/update" class="font-medium text-fg-brand hover:underline">Update Account</Link> |{" "}
           <Link to="/addGame" class="font-medium text-fg-brand hover:underline">Add Game</Link> |{" "}
-          <Link to="/games" class="font-medium text-fg-brand hover:underline">View Games</Link> |{" "}
-          <Button onClick={handleLogout} variant = "outlined" startIcon={<LogoutIcon />}>Logout</Button>
+          <Link to="/games" class="font-medium text-fg-brand hover:underline">View Games</Link> 
+          {" "}
+          <Button onClick={handleLogout} variant = "contained" startIcon={<LogoutIcon />}>Logout</Button>
         </>
       )}
     </nav>

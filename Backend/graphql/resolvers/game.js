@@ -22,7 +22,7 @@ export const gameResolvers = {
 
             return userGames;
         },
-        
+
         game: async(_, args, context) => {
             const token = context.req.cookies.token;
             if (!token) {

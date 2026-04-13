@@ -5,10 +5,14 @@ import { useUser } from "../Hooks/useUser";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import LoginIcon from "@mui/icons-material/Login"
+import { useQuery } from "@apollo/client";
+import { GET_MY_GAMES } from "../graphql/queries";
 
 function Login() {
   const navigate = useNavigate();
-  const {login, loading, error, message, setMessage} = useUser();
+  const {login, loading, error, message, setMessage, user} = useUser();
+
+  const {refetch} = useQuery(GET_MY_GAMES, {skip: !user})
 
   const [formData, setFormData] = useState({
     username: "",
@@ -28,6 +32,7 @@ function Login() {
     await login(formData.username, formData.password, navigate)
     if (!error)
     {
+      refetch();
       setMessage("");
     }
   };

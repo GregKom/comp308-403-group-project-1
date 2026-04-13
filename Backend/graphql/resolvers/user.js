@@ -97,7 +97,13 @@ export const userResolvers = {
                 throw new Error("Not Authorized!");
             }
 
-            return User.findByIdAndUpdate(args.id, args.input)
+            if (args.input.username) user.username = args.input.username;
+            if (args.input.email) user.email = args.input.email;
+            if (args.input.password) user.password = args.input.password;
+
+            await user.save();
+
+            return user;
         },
 
         deleteUser: async(_, args, context) => 

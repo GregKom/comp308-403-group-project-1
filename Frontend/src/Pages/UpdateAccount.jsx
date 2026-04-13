@@ -83,11 +83,12 @@ function UpdateAccount()
     }
     return (
         <>
-                <div>
+        <div class = "flex items-center justify-center ">
+        <div class= "w-full max-w-lg bg-gradient-to-r from-blue-200 to-cyan-200 p-20 rounded-lg shadow-lg">
             <h1>Update Account</h1>
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Username:</label>
+                <div class = "p-2">
+                    <label><b>Username: </b></label>
                     <TextField
                         type="text"
                         name="username"
@@ -95,8 +96,8 @@ function UpdateAccount()
                         onChange={handleChange}
                     />
                 </div>
-                <div>
-                    <label>Email:</label>
+                <div class = "p-2">
+                    <label><b>Email: </b></label>
                     <TextField
                         type="email"
                         name="email"
@@ -104,8 +105,8 @@ function UpdateAccount()
                         onChange={handleChange}
                     />
                 </div>
-                <div>
-                    <label>Password:</label>
+                <div class = "p-2">
+                    <label><b>Password: </b></label>
                     <TextField
                         type="password"
                         name="password"
@@ -113,14 +114,18 @@ function UpdateAccount()
                         onChange={handleChange}
                     />
                 </div>
+                <div class = "p-2">
                 <Button type="submit" variant="contained" startIcon={<SendIcon />}>Update</Button>
+                </div>
             </form>
 
             {message && <p>{message}</p>}
-        </div>
+        
 
         <div>
             <Button onClick={handleDelete} variant="contained" color="error" startIcon={<DeleteIcon />} >Delete Account</Button>        
+        </div>
+        </div>
         </div>
         </>
     )

@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { useParams, useNavigate } from "react-router-dom";
-import { GET_GAME } from "../graphql/queries";
+import { GET_GAME, GET_MY_GAMES } from "../graphql/queries";
 import { UPDATE_GAME, DELETE_GAME } from "../graphql/mutations";
-
+import TextField from "@mui/material/TextField";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 function ViewSingleGame() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -49,7 +51,7 @@ function ViewSingleGame() {
       description: game.description || "",
       status: game.status || "",
       rating: game.rating ?? "",
-      releaseDate: game.releaseDate ? game.releaseDate.split("T")[0] : "",
+       releaseDate: game.releaseDate ? game.releaseDate.split("T")[0] : "",
       imageUrl: game.imageUrl || ""
     });
 
@@ -92,7 +94,8 @@ function ViewSingleGame() {
 
     try {
       await deleteGame({
-        variables: { id }
+        variables: { id },
+        refetchQueries: [{query: GET_MY_GAMES}]
       });
 
       alert("Game deleted successfully!");
@@ -122,14 +125,14 @@ function ViewSingleGame() {
           <p><strong>Rating:</strong> {game.rating ?? "N/A"}</p>
           <p>
             <strong>Release Date:</strong>{" "}
-            {game.releaseDate
-              ? new Date(game.releaseDate).toLocaleDateString()
+            {game.releaseDate && !isNaN(game.releaseDate) 
+              ? new Date(Number(game.releaseDate)).toLocaleDateString()
               : "N/A"}
           </p>
           <p>
             <strong>Added On:</strong>{" "}
-            {game.createdAt
-              ? new Date(game.createdAt).toLocaleDateString()
+            {game.createdAt && !isNaN(game.createdAt) 
+              ? new Date(Number(game.createdAt)).toLocaleDateString()
               : "N/A"}
           </p>
 
@@ -145,7 +148,7 @@ function ViewSingleGame() {
         <form onSubmit={handleUpdate}>
           <div>
             <label>Title:</label><br />
-            <input
+            <TextField
               type="text"
               name="title"
               value={formData.title}
@@ -156,7 +159,7 @@ function ViewSingleGame() {
 
           <div>
             <label>Platform:</label><br />
-            <input
+            <TextField
               type="text"
               name="platform"
               value={formData.platform}
@@ -166,7 +169,7 @@ function ViewSingleGame() {
 
           <div>
             <label>Description:</label><br />
-            <textarea
+            <TextField
               name="description"
               value={formData.description}
               onChange={handleChange}
@@ -174,18 +177,22 @@ function ViewSingleGame() {
           </div>
 
           <div>
-            <label>Status:</label><br />
-            <input
-              type="text"
+            <label>Status:</label>
+            <Select
               name="status"
               value={formData.status}
               onChange={handleChange}
-            />
+            >
+              <MenuItem value="Playing">Playing</MenuItem>
+              <MenuItem value="Completed">Completed</MenuItem>
+              <MenuItem value="Backlog">Backlog</MenuItem>
+              <MenuItem value="Re-playing">Re-playing</MenuItem>
+            </Select>
           </div>
 
           <div>
             <label>Rating:</label><br />
-            <input
+            <TextField
               type="number"
               name="rating"
               value={formData.rating}
@@ -197,7 +204,7 @@ function ViewSingleGame() {
 
           <div>
             <label>Release Date:</label><br />
-            <input
+            <TextField
               type="date"
               name="releaseDate"
               value={formData.releaseDate}
@@ -207,7 +214,7 @@ function ViewSingleGame() {
 
           <div>
             <label>Image URL:</label><br />
-            <input
+            <TextField
               type="text"
               name="imageUrl"
               value={formData.imageUrl}

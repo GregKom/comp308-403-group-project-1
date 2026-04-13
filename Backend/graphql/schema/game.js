@@ -24,6 +24,7 @@ input AddGameInput {
 input UpdateGameInput {
     title: String
     platform: String,
+    description: String,
     status: String,
     rating: Int,
     releaseDate: String,

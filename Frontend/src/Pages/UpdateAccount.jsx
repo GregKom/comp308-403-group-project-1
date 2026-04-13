@@ -27,7 +27,7 @@ function UpdateAccount()
 
     const [formData, setFormData] = useState({
         username: user?.username || "",
-        password: user?.email || "",
+        password: "",
         email: user?.email || ""
     })
 

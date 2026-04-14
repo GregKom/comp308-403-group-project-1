@@ -152,7 +152,7 @@ function ViewSingleGame() {
             {deleting ? "Deleting..." : "Delete"}
           </button>
 
-          <Link class="font-medium text-fg-brand hover:underline" to={`/games`}>Back</Link>
+          {/* <Link class="font-medium text-fg-brand hover:underline" to={`/games`}>Back</Link> */}
         </div> //view page
       ) : (
         <form onSubmit={handleUpdate}>

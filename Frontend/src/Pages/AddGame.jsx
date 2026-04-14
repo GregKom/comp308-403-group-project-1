@@ -68,11 +68,12 @@ function AddGame() {
 
   return (
     <>
-    
+         <div class = "flex items-center justify-center">
+        <div class= "w-full max-w-lg bg-gradient-to-r from-blue-200 to-cyan-200 p-20 rounded-lg shadow-lg">   
         <h1>Add A Game</h1>
-        <div class = "flex items-center justify-center">
-        <div class= "w-full max-w-lg bg-gradient-to-r from-blue-200 to-cyan-200 p-20 rounded-lg shadow-lg">
+
         <form onSubmit={handleSubmit}>
+          <div class = "p-2">
             <label ><b>Title: </b></label><br/>
             <TextField
               type="text"
@@ -81,7 +82,7 @@ function AddGame() {
               value={formData.title}
               onChange={handleChange}
             />
-
+          </div>
           <div class = "p-2">
             <label><b>Platform: </b></label><br/>
             <TextField

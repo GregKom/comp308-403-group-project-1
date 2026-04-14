@@ -88,7 +88,6 @@ function UpdateAccount()
             <div class = "flex items-center justify-center ">
             <div class= "w-full max-w-lg bg-gradient-to-r from-blue-200 to-cyan-200 p-20 rounded-lg shadow-lg">
             <form onSubmit={handleSubmit}>
-                <div class = "p-2">
                     <label><b>Username: </b></label><br/>
                     <TextField
                         type="text"
@@ -96,7 +95,6 @@ function UpdateAccount()
                         value={formData.username}
                         onChange={handleChange}
                     />
-                </div>
                 <div class = "p-2">
                     <label><b>Email: </b></label><br/>
                     <TextField

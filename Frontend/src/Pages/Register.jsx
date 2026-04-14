@@ -57,7 +57,7 @@ function Register() {
         />
         </div>
         <div class = "p-5">
-          <lable><b>Password:</b></lable>
+          <lable><b>Password:</b></lable><br/>
         <TextField
           type= "password"
           name="password"

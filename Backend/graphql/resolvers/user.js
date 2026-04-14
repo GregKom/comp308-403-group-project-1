@@ -80,7 +80,11 @@ export const userResolvers = {
 
         logoutUser: async(_, __, context) =>
         {
-          context.res.clearCookie("token");
+          context.res.clearCookie("token", {
+            httpOnly: true,
+            secure: true,
+            sameSite: "none",
+            });
           return "Logged out"
         },
 

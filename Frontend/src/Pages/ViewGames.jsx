@@ -36,6 +36,7 @@ function ViewGames() {
                 <img
                   src={game.imageUrl}
                   alt={game.title}
+                  class="block mx-auto w-[300px] mb-4"
                   style={{ width: "200px", height: "auto" }}
                 />
               )}

@@ -54,7 +54,7 @@ function Login() {
           />
           </div>
           <div class = "p-5">
-            <label><b>Password:</b></label>
+            <label><b>Password:</b></label><br/>
             <TextField
             type="password"
             name="password"

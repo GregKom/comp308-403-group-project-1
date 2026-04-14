@@ -26,7 +26,7 @@ function Navbar() {
           <Link to="/update" class="font-medium text-fg-brand hover:underline">Update Account</Link> |{" "}
           <Link to="/addGame" class="font-medium text-fg-brand hover:underline">Add Game</Link> |{" "}
           <Link to="/games" class="font-medium text-fg-brand hover:underline">View Games</Link> 
-          <div class="flex items-center gap-4">
+          <div class="flex items-center gap-2">
           <Button onClick={handleLogout} variant = "contained" startIcon={<LogoutIcon />}>Logout</Button>
           </div>
         </>

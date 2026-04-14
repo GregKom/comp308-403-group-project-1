@@ -110,7 +110,7 @@ function ViewSingleGame() {
     <div>
       <div class = "flex items-center justify-center">
         <div class = "w-full max-w-lg bg-gradient-to-r from-blue-200 to-cyan-200 p-20 rounded-lg shadow-lg">
-          <h1>{game.title}</h1>
+          <h1 class="text-3xl py-4">{game.title}</h1>
 
       {!isEditing ? (
         <div>
@@ -151,6 +151,8 @@ function ViewSingleGame() {
           <button className="mr-3 bg-blue-500 text-white font-medium px-4 py-2 rounded shadow hover:bg-blue-600 active:bg-blue-700" onClick={handleDelete} disabled={deleting}>
             {deleting ? "Deleting..." : "Delete"}
           </button>
+
+          <Link class="font-medium text-fg-brand hover:underline" to={`/games`}>Back</Link>
         </div> //view page
       ) : (
         <form onSubmit={handleUpdate}>
@@ -237,6 +239,7 @@ function ViewSingleGame() {
           <button type="button" className="mr-3 bg-blue-500 text-white font-medium px-4 py-2 rounded shadow hover:bg-blue-600 active:bg-blue-700" onClick={() => setIsEditing(false)}>
             Cancel
           </button>
+
         </form>
       )}
       </div>

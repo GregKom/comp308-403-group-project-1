@@ -110,7 +110,7 @@ function ViewSingleGame() {
     <div>
       <div class = "flex items-center justify-center">
         <div class = "w-full max-w-lg bg-gradient-to-r from-blue-200 to-cyan-200 p-20 rounded-lg shadow-lg">
-          <h1 class="text-3xl py-4">{game.title}</h1>
+          <h1>{game.title}</h1>
 
       {!isEditing ? (
         <div>

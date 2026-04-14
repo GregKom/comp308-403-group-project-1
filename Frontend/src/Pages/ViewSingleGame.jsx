@@ -144,7 +144,7 @@ function ViewSingleGame() {
               : "N/A"}
           </p>
 
-          <button onClick={handleEditClick} variant = "contained" style={{ marginRight: "10px" }}>
+          <button variant = "contained" onClick={handleEditClick}  style={{ marginRight: "10px" }}>
             Edit
           </button>
 
@@ -153,9 +153,9 @@ function ViewSingleGame() {
           </button>
         </div> //view page
       ) : (
-        <form onSubmit={handleUpdate}> //edit page
+        <form onSubmit={handleUpdate}>
           <div>
-            <label>Title:</label><br />
+            <label><b>Title:</b></label><br />
             <TextField
               type="text"
               name="title"
@@ -166,7 +166,7 @@ function ViewSingleGame() {
           </div>
 
           <div>
-            <label>Platform:</label><br />
+            <label><b>Platform:</b></label><br />
             <TextField
               type="text"
               name="platform"
@@ -176,7 +176,7 @@ function ViewSingleGame() {
           </div>
 
           <div>
-            <label>Description:</label><br />
+            <label><b>Description:</b></label><br />
             <TextField
               name="description"
               value={formData.description}
@@ -185,7 +185,7 @@ function ViewSingleGame() {
           </div>
 
           <div>
-            <label>Status:</label>
+            <label><b>Status:</b></label>
             <Select
               name="status"
               value={formData.status}
@@ -199,7 +199,7 @@ function ViewSingleGame() {
           </div>
 
           <div>
-            <label>Rating:</label><br />
+            <label><b>Rating:</b></label><br />
             <Rating
               name="rating"
               value={formData.rating}
@@ -209,7 +209,7 @@ function ViewSingleGame() {
           </div>
 
           <div>
-            <label>Release Date:</label><br />
+            <label><b>Release Date:</b></label><br />
             <TextField
               type="date"
               name="releaseDate"
@@ -219,7 +219,7 @@ function ViewSingleGame() {
           </div>
 
           <div>
-            <label>Image URL:</label><br />
+            <label><b>Image URL:</b></label><br />
             <TextField
               type="text"
               name="imageUrl"

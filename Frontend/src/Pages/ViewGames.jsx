@@ -30,6 +30,7 @@ function ViewGames() {
               }}
             >
               <h2>{game.title}</h2>
+              <br></br>
 
               {game.imageUrl && (
                 <img

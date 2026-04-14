@@ -73,7 +73,7 @@ function AddGame() {
         <h1>Add A Game</h1>
         <form onSubmit={handleSubmit}>
           <div class = "p-2">
-            <label ><b>Title: </b></label>
+            <label ><b>Title: </b></label><br/>
             <TextField
               type="text"
               name="title"
@@ -84,7 +84,7 @@ function AddGame() {
           </div>
 
           <div class = "p-2">
-            <label><b>Platform: </b></label>
+            <label><b>Platform: </b></label><br/>
             <TextField
               type="text"
               name="platform"
@@ -95,7 +95,7 @@ function AddGame() {
           </div>
 
           <div class = "p-2">
-            <label><b>Description: </b></label>
+            <label><b>Description: </b></label><br/>
             <TextField
               type="text"
               name="description"
@@ -106,7 +106,7 @@ function AddGame() {
           </div>
 
           <div class = "p-2">
-            <label><b>Status: </b></label>
+            <label><b>Status: </b></label><br/>
             <Select
               name="status"
               value={formData.status}
@@ -121,7 +121,7 @@ function AddGame() {
           </div>
 
           <div class = "p-2">
-            <label><b>Rating (0-10):</b></label>
+            <label><b>Rating (0-10):</b></label><br/>
             <Rating 
               name="rating"
               value={formData.rating}
@@ -131,7 +131,7 @@ function AddGame() {
           </div>
 
           <div class = "p-2">
-            <label><b>Release Date: </b></label>
+            <label><b>Release Date: </b></label><br/>
             <TextField
               type="date"
               name="releaseDate"
@@ -141,7 +141,7 @@ function AddGame() {
           </div>
 
           <div class = "p-2">
-            <label><b>Image URL: </b></label>
+            <label><b>Image URL: </b></label><br/>
             <TextField
               type="text"
               name="imageUrl"

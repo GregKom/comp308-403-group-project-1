@@ -186,7 +186,7 @@ function ViewSingleGame() {
           </div>
 
           <div>
-            <label><b>Status:</b></label>
+            <label><b>Status:</b></label><br />
             <Select
               name="status"
               value={formData.status}
@@ -220,7 +220,7 @@ function ViewSingleGame() {
           </div>
 
           <div>
-            <label><b></b>Image URL:</label><br />
+            <label><b>Image URL:</b></label><br />
             <TextField
               type="text"
               name="imageUrl"

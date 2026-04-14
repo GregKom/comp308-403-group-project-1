@@ -44,6 +44,7 @@ function Login() {
 
         <form onSubmit={handleSubmit}>
           <div class = "p-5">
+            <label><b>Username:</b></label><br/>
             <TextField
             type="text"
             name="username"
@@ -53,6 +54,7 @@ function Login() {
           />
           </div>
           <div class = "p-5">
+            <label><b>Password:</b></label>
             <TextField
             type="password"
             name="password"

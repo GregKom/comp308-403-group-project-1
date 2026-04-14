@@ -88,7 +88,7 @@ function UpdateAccount()
             <h1>Update Account</h1>
             <form onSubmit={handleSubmit}>
                 <div class = "p-2">
-                    <label><b>Username: </b></label>
+                    <label><b>Username: </b></label><br/>
                     <TextField
                         type="text"
                         name="username"
@@ -97,7 +97,7 @@ function UpdateAccount()
                     />
                 </div>
                 <div class = "p-2">
-                    <label><b>Email: </b></label>
+                    <label><b>Email: </b></label><br/>
                     <TextField
                         type="email"
                         name="email"
@@ -106,7 +106,7 @@ function UpdateAccount()
                     />
                 </div>
                 <div class = "p-2">
-                    <label><b>Password: </b></label>
+                    <label><b>Password: </b></label><br/>
                     <TextField
                         type="password"
                         name="password"

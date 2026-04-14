@@ -37,6 +37,7 @@ function Register() {
 
       <form onSubmit={handleSubmit}>
         <div class = "p-5">
+        <label><b>Username:</b></label><br/>
         <TextField
           type="text"
           name="username"
@@ -46,6 +47,7 @@ function Register() {
         />
         </div>
         <div class = "p-5">
+          <label><b>Email:</b></label><br/>
         <TextField
           type="email"
           name="email"
@@ -55,6 +57,7 @@ function Register() {
         />
         </div>
         <div class = "p-5">
+          <lable><b>Password:</b></lable>
         <TextField
           type= "password"
           name="password"
